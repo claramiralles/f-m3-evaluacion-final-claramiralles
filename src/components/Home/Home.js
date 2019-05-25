@@ -9,15 +9,14 @@ const Home = props => {
 
     return (
        <div>
-        {/* <Filters 
-            onInputChange ={this.handlerUpdateValue}
-            nameValue={nameValue}
-        /> */}
+        <Filters 
+            onSearch ={onSearch}
+            name={name}
+        />
         
         <CharacterList 
-            people={people}
-            //     filter(character => 
-            // character.name.includes(this.state.filter.name))}
+            people={people.filter(character => 
+            character.name.includes(name))}
             name={name}
             onSearch={onSearch}
         />

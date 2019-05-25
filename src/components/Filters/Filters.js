@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Filters extends Component {
     render(){
-        const {onInputChange, nameValue}=this.props;
+        const {onSearch, name}=this.props;
         return(
         <form>
             <fieldset>
@@ -12,8 +12,8 @@ class Filters extends Component {
                 type="text"
                 name="search"
                 id="search"
-                value={nameValue}
-                onChange={onInputChange}
+                value={name}
+                onChange={onSearch}
                 />
                 <label htmlFor="search"></label>
             </fieldset>
@@ -22,7 +22,7 @@ class Filters extends Component {
     }
 }
 Filters.propTypes = {
-    onInputChange: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired
 };
 
 export default Filters;
