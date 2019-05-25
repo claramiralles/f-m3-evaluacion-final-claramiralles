@@ -1,7 +1,6 @@
 import React, {Fragment, Component} from 'react';
 import{Route, Switch} from 'react-router-dom';
-import Filters from '../Filters/Filters';
-import CharacterList from '../CharacterList/CharacterList';
+import Home from '../Home/Home';
 import Detail from '../Detail/Detail';
 import fetchPeople from '../../services/people-service';
 
@@ -36,61 +35,47 @@ class App extends Component {
           data: newData,
           isFetching: false
         }
-      }     
-      )},
-     ) }
+      })
+    }) 
+  }
 
   getCharacter(id) {
     const { data } = this.state.people;
     return data.find(character => character.id === parseInt(id));
   }
 
-  // handlerUpdateValue (e) {
-  //   const {value} = e.target;
-  //   this.setState(prevState => {
-  //     return {
-  //       people: {
-  //         ...prevState.people
-  //       },
-  //       filter: {
-  //         inputValue: value
-  //       }
-  //     }
-  //   })
-  // }
-
   handlerUpdateValue (e) {
     const {value} = e.target;
     this.setState({ 
       filter: {
         name: value
-    }}
-    )
+      }
+    })
   }
 
   render () {
     const {data, isFetching} = this.state.people;
+    const {name} = this.state.filter;
     return (
       <div>
         <header>
           <h1>The Harry Potter Characters</h1>
         </header>
-
-
         <main>
           <Switch>
-            <Route exact path="/" render={() => isFetching 
-                ? (<p>Loading...</p>)
-                :(<Fragment>
-                      <Filters onInputChange ={this.handlerUpdateValue}
-                      nameValue={this.state.filter.name}/>
-                      <CharacterList people={data}/>
-                    </Fragment> )} />
-
+            <Route exact path="/" render={routerProps => (
+            <Home
+                match={routerProps.match} 
+                people={data}
+                  // .filter
+                  // (character => character.name.includes(this.state.filter.name))}
+                name={name}
+                onSearch={this.handlerUpdateValue}
+              />)}
+                          />
             <Route
               path="/character-detail/:characterId"
               render={routeProps => {
-                // console.log(routeProps);
                 return (
                   <Detail
                     character={this.getCharacter(routeProps.match.params.characterId)}
@@ -101,11 +86,6 @@ class App extends Component {
             />
           </Switch>
         </main>
-
-
-       
-
-
       </div>
     )
   }

@@ -15,7 +15,7 @@ class Filters extends Component {
                 value={nameValue}
                 onChange={onInputChange}
                 />
-                <label htmlFor="search">Search</label>
+                <label htmlFor="search"></label>
             </fieldset>
         </form>
         )
