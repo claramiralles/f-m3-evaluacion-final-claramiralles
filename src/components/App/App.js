@@ -13,7 +13,11 @@ class App extends Component {
         data: [],
         isFetching: true 
       },
+      filter: {
+        name: '',
+      }
     };
+    this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
   }
 
   componentDidMount() {
@@ -36,13 +40,33 @@ class App extends Component {
       )},
      ) }
 
-
   getCharacter(id) {
     const { data } = this.state.people;
     return data.find(character => character.id === parseInt(id));
   }
 
+  // handlerUpdateValue (e) {
+  //   const {value} = e.target;
+  //   this.setState(prevState => {
+  //     return {
+  //       people: {
+  //         ...prevState.people
+  //       },
+  //       filter: {
+  //         inputValue: value
+  //       }
+  //     }
+  //   })
+  // }
 
+  handlerUpdateValue (e) {
+    const {value} = e.target;
+    this.setState({ 
+      filter: {
+        name: value
+    }}
+    )
+  }
 
   render () {
     const {data, isFetching} = this.state.people;
@@ -58,7 +82,8 @@ class App extends Component {
             <Route exact path="/" render={() => isFetching 
                 ? (<p>Loading...</p>)
                 :(<Fragment>
-                      {/* <Filters /> */}
+                      <Filters onInputChange ={this.handlerUpdateValue}
+                      nameValue={this.state.filter.name}/>
                       <CharacterList people={data}/>
                     </Fragment> )} />
 
