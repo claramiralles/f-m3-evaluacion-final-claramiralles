@@ -16,7 +16,7 @@ const Home = props => {
         
         <CharacterList 
             people={people.filter(character => 
-            character.name.includes(name))}
+            character.name.toUpperCase().includes(name.toUpperCase()))}
             name={name}
             onSearch={onSearch}
         />
