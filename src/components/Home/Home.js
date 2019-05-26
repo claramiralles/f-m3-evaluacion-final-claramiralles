@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Filters from '../Filters/Filters';
 import CharacterList from '../CharacterList/CharacterList';
-// import PropTypes from 'prop-types';
 
 const Home = props => {
 
-    const {match, people, name, onSearch} = props;
+    const {people, name, onSearch} = props;
 
     return (
        <div>
+        <header className = "title">
+          <h1>"Harry Potter Characters"</h1>
+        </header>
+
         <Filters 
             onSearch ={onSearch}
             name={name}

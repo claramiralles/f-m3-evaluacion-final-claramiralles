@@ -1,5 +1,49 @@
-.card__picture{
-    background-size: cover;
-    background-position: center;
-    background-image: url('../images/darth-vader.jpg')
+.detail-page__container {
+    margin-top: 5%;
+}
+
+.detail-page__subcontainer {
+    font-family: 'Trykker', serif;
+    font-size: 10px;
+    color: black;
+    text-align: center;
+    margin: 2% 30%;
+    padding: 10px 25px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.detail-page__link {
+    font-family: 'Trykker', serif;
+    font-size: 18px;
+    color: #7f0909;
+    font-weight: bolder;
+}
+
+.detail-page__image {
+    max-height: 280px;
+    max-width: 280px;
+    border-radius: 10px;
+    border: solid 4px#eeba30;
+    margin: 5%;
+}
+
+.detail-page__text-container{
+    margin: 3%;
+    padding: 5%;
+}
+
+.detail-page__text {
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.detail-page__characteristic {
+    font-weight: bold;
 }

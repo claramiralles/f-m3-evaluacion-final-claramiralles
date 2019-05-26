@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './CharacterCard.scss'
 
@@ -13,7 +13,7 @@ const CharacterCard = props => {
             <div className = "image__container">
                 <img src={img} alt={name} className="image"/>
             </div>
-            <p>{house}</p>
+            <h3>{house}</h3>
         </article>
         </div>
     )

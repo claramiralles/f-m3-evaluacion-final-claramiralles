@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, {Component} from 'react';
 import{Route, Switch} from 'react-router-dom';
 import Home from '../Home/Home';
 import Detail from '../Detail/Detail';
@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       people: {
         data: [],
-        isFetching: true 
       },
       filter: {
         name: '',
@@ -34,7 +33,6 @@ class App extends Component {
       this.setState({
         people: {
           data: newData,
-          isFetching: false
         }
       })
     }) 
@@ -55,21 +53,16 @@ class App extends Component {
   }
 
   render () {
-    const {data, isFetching} = this.state.people;
+    const {data} = this.state.people;
     const {name} = this.state.filter;
     return (
       <div className = "App">
-        <header className = "title">
-          <h1>"Harry Potter Characters"</h1>
-        </header>
         <main>
           <Switch>
             <Route exact path="/" render={routerProps => (
             <Home
                 match={routerProps.match} 
                 people={data}
-                  // .filter
-                  // (character => character.name.includes(this.state.filter.name))}
                 name={name}
                 onSearch={this.handlerUpdateValue}
               />)}
