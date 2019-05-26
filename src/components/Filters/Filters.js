@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import './Filters.scss'
 
 class Filters extends Component {
     render(){
         const {onSearch, name}=this.props;
         return(
         <form>
-            <fieldset>
-                <legend>Write the name of any character</legend>
-                <input
+            <fieldset className = "search-engine__container">
+                <legend className = "invitation__title">Type your favorite character</legend>
+                <input className = "input__container"
                 type="text"
                 name="search"
                 id="search"

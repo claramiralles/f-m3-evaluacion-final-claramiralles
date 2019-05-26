@@ -3,6 +3,7 @@ import{Route, Switch} from 'react-router-dom';
 import Home from '../Home/Home';
 import Detail from '../Detail/Detail';
 import fetchPeople from '../../services/people-service';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {
@@ -57,9 +58,9 @@ class App extends Component {
     const {data, isFetching} = this.state.people;
     const {name} = this.state.filter;
     return (
-      <div>
-        <header>
-          <h1>The Harry Potter Characters</h1>
+      <div className = "App">
+        <header className = "title">
+          <h1>"Harry Potter Characters"</h1>
         </header>
         <main>
           <Switch>

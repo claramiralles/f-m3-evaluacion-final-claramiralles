@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Detail from '../Detail/Detail';
+import './CharacterCard.scss'
 
 const CharacterCard = props => {
 
@@ -8,9 +8,11 @@ const CharacterCard = props => {
 
     return (
         <div>
-        <article>
-            <h2>{name}</h2>
-            <img src={img} alt={name}/>
+        <article className = "card__container">
+            <h2 className = "name">{name}</h2>
+            <div className = "image__container">
+                <img src={img} alt={name} className="image"/>
+            </div>
             <p>{house}</p>
         </article>
         </div>
