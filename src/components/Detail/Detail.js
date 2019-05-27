@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 class Detail extends Component {
  
   render() {
-    const {name, actor, image, house, dateOfBirth, ancestry, eyeColour, hairColour, patronus, id, alive} = this.props.character;
-    const {cidState, action} = this.props
+    const {name, actor, image, house, dateOfBirth, ancestry, eyeColour, hairColour, patronus, alive} = this.props.character;
    
     return (
       <div className = "detail-page__container">
@@ -23,22 +22,16 @@ class Detail extends Component {
             Born on <span className = "detail-page__characteristic">{dateOfBirth}</span>, of <span className = "detail-page__characteristic">{ancestry}</span> ancestry, this character has <span className = "detail-page__characteristic">{eyeColour}</span> eyes and <span className = "detail-page__characteristic">{hairColour}</span> hair.
         </p>
 
-        {/* <div > */}
-          {/* <p className = {`detail-page__text ${cidState === id} ?'no-patronus':''}`} id={id} onClick={action} data-id={id}> */}
-         <p> {!patronus ? 'There is no patronus'
+         <p className = "detail-page__text"> {!patronus ? 'There is no patronus'
                         : `When ${name} takes the wand to invoke the Patronus Charm, an amazing ${patronus} appears to protect our beloved character.`
             }
         </p> 
-        {/* <p>
-        When <span className = "detail-page__characteristic">{name}</span> takes the wand to invoke the Patronus Charm, an amazing <span className = "detail-page__characteristic">{patronus}</span> appears to protect our beloved character.
-        </p> */}
-        {/* </div> */}
-        {/* <p className = "detail-page__text"> 
-            <span className = "detail-page__characteristic">{name}</span> does not have a Patronus Charm.
-        </p>
-        <p className = "detail-page__text"> 
-            <span className = "detail-page__characteristic">{alive}</span>.
-        </p> */}
+
+        <p className = "detail-page__text"> {alive === true ? `${name} is still alive.`
+                        : `${name} has unfortunately deceased.`
+            }
+        </p> 
+        
         </section>
        
       </div>
