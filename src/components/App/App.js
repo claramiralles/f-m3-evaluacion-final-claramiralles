@@ -87,7 +87,7 @@ class App extends Component {
                   match={routerProps.match} 
                   name={name}
                   onSearch={this.handlerUpdateValue}
-                  people = {this.state.people.data.filter(character => character.name.toUpperCase().includes(name.toUpperCase())).filter(character => !this.state.filter.houses.length || this.state.filter.houses.includes(character.house))} //si el array que tengo en el estado incl. uye la casa que  te estoy pasando me lo pintas //si el array de cuatro que tengo guardado en el estado me incluye la casa por lla que esta pasando, me lo pinta. si la longitud de filter.houses.length me da un truthhy, por tanto me lo pinta, si no me va a la segunda condicion
+                  people = {this.state.people.data.filter(character => character.name.toUpperCase().includes(name.toUpperCase())).filter(character => this.state.filter.houses.includes(character.house) || !this.state.filter.houses.length)} 
                   onSearchHouses = {this.getHouses}
                 />
               )}
@@ -119,3 +119,5 @@ export default App;
 
 
 // houses: prevState.filters.houses.find(item => item === value) //buscame un item igual al value. como no lo vas a encontrar, se produce un falsy y entonces vamos a la condicion : que te une el value. si es verdadero, para que me lo desclicque le doy la condicion de ? con filter, filter me devuelve un array, en este caso todos los elementos cuyo value sea distinto al value que he clickado
+
+//si el array que tengo en el estado incl. uye la casa que  te estoy pasando me lo pintas //si el array de cuatro que tengo guardado en el estado me incluye la casa por lla que esta pasando, me lo pinta. si la longitud de filter.houses.length me da un truthhy, por tanto me lo pinta, si no me va a la segunda condicion
