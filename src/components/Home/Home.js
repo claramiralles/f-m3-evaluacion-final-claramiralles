@@ -7,14 +7,14 @@ const Home = props => {
 
   return (
     <div>
-      <header className="title">
+      <header className = "title">
         <h1>"Harry Potter Characters"</h1>
       </header>
 
-      <Filters onSearch={onSearch} name={name} />
+      <Filters onSearch = {onSearch} name = {name} />
 
       <CharacterList
-        people={people.filter(character =>
+        people = {people.filter(character =>
           character.name.toUpperCase().includes(name.toUpperCase())
         )}
       />

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
+import './App.scss';
+import fetchPeople from '../../services/people-service';
 import{Route, Switch} from 'react-router-dom';
 import Home from '../Home/Home';
 import Detail from '../Detail/Detail';
-import fetchPeople from '../../services/people-service';
-import './App.scss';
 
 class App extends Component {
   constructor(props) {
@@ -27,20 +27,16 @@ class App extends Component {
     fetchPeople()
     .then(data => {
       const newData = data.map ((item, index) => {
-        return {...item, id: index + 1};
+        return {
+          ...item, 
+          id: index + 1};
       })
-      console.log(data);
       this.setState({
         people: {
           data: newData,
         }
       })
     }) 
-  }
-
-  getCharacter(id) {
-    const { data } = this.state.people;
-    return data.find(character => character.id === parseInt(id));
   }
 
   handlerUpdateValue (e) {
@@ -52,6 +48,12 @@ class App extends Component {
     })
   }
 
+  getCharacter(id) {
+    const { data } = this.state.people;
+    return data.find(character => 
+      character.id === parseInt(id));
+  }
+
   render () {
     const {data} = this.state.people;
     const {name} = this.state.filter;
@@ -59,21 +61,24 @@ class App extends Component {
       <div className = "App">
         <main>
           <Switch>
-            <Route exact path="/" render={routerProps => (
-            <Home
-                match={routerProps.match} 
-                people={data}
-                name={name}
-                onSearch={this.handlerUpdateValue}
-              />)}
-                          />
+            <Route 
+              exact path = "/" 
+              render = {routerProps => (
+              <Home
+                  match={routerProps.match} 
+                  people={data}
+                  name={name}
+                  onSearch={this.handlerUpdateValue}
+                />
+              )}
+            />
             <Route
-              path="/character-detail/:characterId"
-              render={routeProps => {
+              path = "/character-detail/:characterId"
+              render = {routeProps => {
                 return (
                   <Detail
-                    character={this.getCharacter(routeProps.match.params.characterId)}
-                    people={data}
+                    character = {this.getCharacter(routeProps.match.params.characterId)}
+                    people = {data}
                   />
                 );
               }}

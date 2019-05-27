@@ -1,26 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './CharacterCard.scss'
+import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 const CharacterCard = props => {
 
-    const {name, img, house,} = props;
+    const {name, image, house, id} = props;
+    console.log(props);
 
     return (
-        <div>
         <article className = "card__container">
-            <h2 className = "name">{name}</h2>
-            <div className = "image__container">
-                <img src={img} alt={name} className="image"/>
-            </div>
-            <h3>{house}</h3>
+            <Link 
+                to = {`/character-detail/${id}`} 
+                className = "link"
+            >
+                <h2 className = "name">
+                    {name}
+                </h2>
+                <div className = "image__container">
+                    <img 
+                        className = "image"
+                        src={image} 
+                        alt={name} 
+                    />
+                </div>
+                <h3>
+                    {house}
+                </h3>
+            </Link>
         </article>
-        </div>
     )
 }
 CharacterCard.propTypes = { 
     name: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     house: PropTypes.string.isRequired,
 }
 export default CharacterCard;

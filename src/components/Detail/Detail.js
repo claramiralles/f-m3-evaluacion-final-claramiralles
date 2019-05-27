@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './Detail.scss'
+import { Link } from 'react-router-dom';
 
 class Detail extends Component {
  
@@ -9,7 +9,7 @@ class Detail extends Component {
    
     return (
       <div className = "detail-page__container">
-      <Link to="/" className = "detail-page__link" >Back</Link>
+        <Link to="/" className = "detail-page__link" >Back</Link>
       <div className = "detail-page__subcontainer">
         <h1>{name}</h1>
         <h2>Played by {actor}</h2>
