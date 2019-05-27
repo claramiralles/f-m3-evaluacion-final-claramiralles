@@ -19,7 +19,7 @@ class App extends Component {
       }
     };
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
-    this.handleAncestry = this.handleAncestry.bind(this);
+    this.getAncestry = this.getAncestry.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +58,19 @@ class App extends Component {
     return data.find(character => 
       character.id === parseInt(id));
   }
+
+  getAncestry(e){
+    const {value} = e.target
+    this.setState (prevState => {
+      return {
+        ...prevState.filter,
+        ancestry: prevState.filter.ancestry.find(character => character === value)
+                ? prevState.filter.ancestry.filter(character => character !== value)
+                : prevState.filter.ancestry.concat(value)
+      }
+    })
+  }
+
 
   render () {
     const {data} = this.state.people;
