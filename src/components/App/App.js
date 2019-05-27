@@ -15,9 +15,11 @@ class App extends Component {
       },
       filter: {
         name: '',
+        ancestry: []
       }
     };
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
+    this.handleAncestry = this.handleAncestry.bind(this);
   }
 
   componentDidMount() {
