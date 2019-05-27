@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       people: {
         data: [],
+        isLoading: true
       },
       filter: {
         name: '',
@@ -34,6 +35,7 @@ class App extends Component {
       this.setState({
         people: {
           data: newData,
+          isLoading: false
         }
       })
     }) 
@@ -50,6 +52,7 @@ class App extends Component {
 
   getCharacter(id) {
     const { data } = this.state.people;
+    console.log (data);
     return data.find(character => 
       character.id === parseInt(id));
   }
@@ -79,6 +82,7 @@ class App extends Component {
                   <Detail
                     character = {this.getCharacter(routeProps.match.params.characterId)}
                     people = {data}
+                    isLoading = {this.state.people.isLoading}
                   />
                 );
               }}
