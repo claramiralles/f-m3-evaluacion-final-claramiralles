@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const CharacterCard = props => {
 
     const {name, image, house, id} = props;
-    console.log(props);
 
     return (
         <article className = "card__container">

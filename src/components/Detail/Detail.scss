@@ -19,7 +19,7 @@
 
 .detail-page__link {
     font-family: 'Trykker', serif;
-    font-size: 18px;
+    font-size: 26px;
     color: #7f0909;
     font-weight: bolder;
 }
@@ -44,6 +44,11 @@
     font-size: 12px;
 }
 
+.no-patronus{} 
+.no-patronus .detail-page__text{
+    display: none;
+    }
+    
 .detail-page__characteristic {
     font-weight: bold;
 }

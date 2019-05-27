@@ -14,9 +14,11 @@ class App extends Component {
       },
       filter: {
         name: '',
-      }
+      },
+      cid: ""
     };
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
+    this.handlePatronus = this.handlePatronus.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +56,23 @@ class App extends Component {
       character.id === parseInt(id));
   }
 
+  handlePatronus(event){
+    const newCid = event.currentTarget.getAttribute('data-id');
+    console.log(event)
+
+    this.setState(prevState =>{
+      if (newCid === prevState.cid) {
+        return {
+          cid: null
+        }
+      } else {
+        return {
+          cid: newCid
+        }
+      }
+    });
+  }
+
   render () {
     const {data} = this.state.people;
     const {name} = this.state.filter;
@@ -79,6 +98,8 @@ class App extends Component {
                   <Detail
                     character = {this.getCharacter(routeProps.match.params.characterId)}
                     people = {data}
+                    cidState = {this.state.cid}
+                    action = {this.handlePatronus}
                   />
                 );
               }}
