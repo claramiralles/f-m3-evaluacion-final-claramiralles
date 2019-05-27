@@ -1,9 +1,11 @@
 
 .image {
-    max-height: 200px;
-    max-width: 200px;
-    border-radius: 10px;
-    border: solid 4px#eeba30;
+    width: 200px;
+    height: 250px;
+    margin-top: 20px;
+    object-fit: cover;
+    object-position: top;
+    box-shadow:  2px 2px 10px 2px black;
 }
 
 .image__container {
@@ -11,6 +13,7 @@
     justify-content: center;
     align-items: center;
     width: 200px;
+    object-fit: contain;
 }
 
 .card__container {
