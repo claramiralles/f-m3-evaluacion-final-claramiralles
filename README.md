@@ -1,3 +1,16 @@
+[x] Crear componente e inputs
+[x] Crear espacio en estado inicial segun tipo de datos y bindear funcion handle
+[x] Crear funcion handle que resete el estado y en la nueva clave
+        (x)  Encuentre los items igual al value
+        (x)  Si los encuentra -> Que filtre los items distintos del value, del array de datos del prevState con la nueva clave.
+        (x)  Si no los encuentra -> Concatene el value, "" "" "" "" "".
+[]Pasar por props los datos mapeados
+        (x)Hacer un filtro sobre el array de datos people = {this.state.filter.ancestry.includes(character.ancestry) y que me filtre aquel item que incluya su ancestro. 
+        (x)  Si no hay nada en el array de datos, eso !this.state.filter.data
+[]Pasar por props la funcion handler, desde el componente abuela App, a la madre Home, al hijo House.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

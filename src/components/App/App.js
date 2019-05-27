@@ -87,8 +87,9 @@ class App extends Component {
                   name={name}
                   onSearch={this.handlerUpdateValue}
                   people = {this.state.people.data.filter(character =>
-                    character.name.toUpperCase().includes(name.toUpperCase())
-                  )}
+                    character.name.toUpperCase().includes(name.toUpperCase()).filter(character => this.state.filter.ancestry.includes(character.ancestry) || !this.state.filter.ancestry.length
+                  ))}
+                 onSearchAncestry = {this.getAncestry} 
                 />
               )}
             />
