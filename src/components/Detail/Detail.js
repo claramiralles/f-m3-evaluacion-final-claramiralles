@@ -26,9 +26,10 @@ class Detail extends Component {
             <p className = "detail-page__text">
                 Born on <span className = "detail-page__characteristic">{this.props.character.dateOfBirth}</span>, of <span className = "detail-page__characteristic">{this.props.character.ancestry}</span> ancestry, this character has <span className = "detail-page__characteristic">{this.props.character.eyeColour}</span> eyes and <span className = "detail-page__characteristic">{this.props.character.hairColour}</span> hair.
             </p>
-            <p className = "detail-page__text"> {!this.props.character.patronus ? 'There is no patronus'
-                            : `When ${this.props.character.name} takes the wand to invoke the Patronus Charm, an amazing ${this.props.character.patronus} appears to protect our beloved character.`
-                }
+            <p className = "detail-page__text"> {!this.props.character.patronus 
+                                                ? `This character does not have a Patronus Charm.`
+                                                : `When ${this.props.character.name} takes the wand to invoke the Patronus Charm, an amazing ${this.props.character.patronus} appears to protect our beloved character.`
+                                                }
             </p> 
             <p className = "detail-page__text"> {this.props.character.alive === true ? `${this.props.character.name} is still alive.`
                             : `${this.props.character.name} has unfortunately deceased.`

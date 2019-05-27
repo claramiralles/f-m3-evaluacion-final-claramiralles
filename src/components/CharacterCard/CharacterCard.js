@@ -24,7 +24,7 @@ const CharacterCard = props => {
                     />
                 </div>
                 <h3>
-                    {house}
+                    {house ? house : 'Hogwarts'}
                 </h3>
             </Link>
         </article>

@@ -16,7 +16,7 @@ const CharacterList = props => {
             <CharacterCard
               name = {character.name}
               image = {character.image}
-              house = {character.house}
+              house = {character.house} 
               id = {character.id}
             />
 

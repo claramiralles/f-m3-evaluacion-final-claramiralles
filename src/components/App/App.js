@@ -69,9 +69,11 @@ class App extends Component {
               render = {routerProps => (
               <Home
                   match={routerProps.match} 
-                  people={data}
                   name={name}
                   onSearch={this.handlerUpdateValue}
+                  people = {this.state.people.data.filter(character =>
+                    character.name.toUpperCase().includes(name.toUpperCase())
+                  )}
                 />
               )}
             />
