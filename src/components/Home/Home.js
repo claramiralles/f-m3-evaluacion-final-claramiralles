@@ -1,9 +1,10 @@
 import React from "react";
 import Filters from "../Filters/Filters";
 import CharacterList from "../CharacterList/CharacterList";
+import House from "../Houses/House";
 
 const Home = props => {
-  const { people, name, onSearch } = props;
+  const { people, name, onSearch, onSearchHouses } = props;
 
   return (
     <div>
@@ -13,10 +14,10 @@ const Home = props => {
 
       <Filters onSearch = {onSearch} name = {name} />
 
+      <House onSearchHouses = {onSearchHouses}/>
+
       <CharacterList
-        people = {people.filter(character =>
-          character.name.toUpperCase().includes(name.toUpperCase())
-        )}
+        people = {people}
       />
     </div>
   );
