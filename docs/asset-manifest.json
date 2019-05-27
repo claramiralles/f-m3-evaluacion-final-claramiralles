@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.be43a629.chunk.css",
-    "main.js": "./static/js/main.2f4d2af8.chunk.js",
-    "main.js.map": "./static/js/main.2f4d2af8.chunk.js.map",
+    "main.css": "./static/css/main.84a501ab.chunk.css",
+    "main.js": "./static/js/main.ea0aebaf.chunk.js",
+    "main.js.map": "./static/js/main.ea0aebaf.chunk.js.map",
     "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
     "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
     "static/js/2.5ffb91d2.chunk.js": "./static/js/2.5ffb91d2.chunk.js",
     "static/js/2.5ffb91d2.chunk.js.map": "./static/js/2.5ffb91d2.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.4105dc27cf2d01d032f7080f8fc45c14.js": "./precache-manifest.4105dc27cf2d01d032f7080f8fc45c14.js",
+    "precache-manifest.4352a52ec11119773eaf45785ac71c70.js": "./precache-manifest.4352a52ec11119773eaf45785ac71c70.js",
     "service-worker.js": "./service-worker.js",
-    "static/css/main.be43a629.chunk.css.map": "./static/css/main.be43a629.chunk.css.map",
+    "static/css/main.84a501ab.chunk.css.map": "./static/css/main.84a501ab.chunk.css.map",
     "static/media/App.scss": "./static/media/hogwarts12.ad3b69d4.jpg"
   }
 }
