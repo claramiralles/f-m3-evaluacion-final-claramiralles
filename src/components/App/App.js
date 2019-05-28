@@ -45,21 +45,26 @@ class App extends Component {
 
   handlerUpdateValue (e) {
     const {value} = e.target;
-    this.setState({ 
-      filter: {
-        name: value
+    this.setState( prevState => {
+      return {
+        filter: {
+          ...prevState.filter,
+          name: value
+        }
       }
     })
   }
 
   handlerUpdateValueHouses (e) {
     const {value} = e.target;
-    this.setState ({
+    this.setState ( prevState => {
+      return {
         filter: {
+          ...prevState.filter,
           housesText: value
-
         }
-      })
+      }
+    })
   }
 
   getCharacter(id) {
@@ -70,7 +75,6 @@ class App extends Component {
   }
 
   render () {
-    const {data} = this.state.people;
     const {name} = this.state.filter;
     const {housesText} = this.state.filter;
     return (
@@ -98,7 +102,7 @@ class App extends Component {
                 return (
                   <Detail
                     character = {this.getCharacter(routeProps.match.params.characterId)}
-                    people = {data}
+                    people = {this.state.people.data}
                     isLoading = {this.state.people.isLoading}
                   />
                 );

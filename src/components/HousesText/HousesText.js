@@ -11,7 +11,7 @@ class HousesText extends Component {
                         name="search-houses-text"
                         id="search-houses-text"
                         value={this.props.housesText}
-                        onClick={this.props.onSearchHousesText}
+                        onChange={this.props.onSearchHousesText}
                         />
                         <label htmlFor="search-houses-text"></label>
                 </fieldset>
