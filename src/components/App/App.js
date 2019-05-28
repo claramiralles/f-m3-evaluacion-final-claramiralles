@@ -87,7 +87,7 @@ class App extends Component {
                   match={routerProps.match} 
                   name={name}
                   onSearch={this.handlerUpdateValue}
-                  
+                  git
                   people = {this.state.people.data.filter(character => character.name.toUpperCase().includes(name.toUpperCase())).filter(character => this.state.filter.houses.includes(character.house) || !this.state.filter.houses.length)} 
                   onSearchHouses = {this.getHouses}
 
