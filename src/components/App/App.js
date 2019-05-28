@@ -16,14 +16,15 @@ class App extends Component {
       filter: {
         name: '',
         houses: [],
+        ancestry: [],
         eyes: []
       }
     }
   
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
     this.getHouses = this.getHouses.bind(this);
+    this.getAncestry = this.getAncestry.bind(this);
     this.getEyes = this.getEyes.bind(this);
-  
   }
 
   componentDidMount() {
@@ -70,6 +71,20 @@ class App extends Component {
             })
           }
 
+  getAncestry (e) {
+    const {value} = e.target;
+    this.setState ( prevState => {
+      return {
+        filter: {
+          ...prevState.filter,
+          ancestry: prevState.filter.ancestry.find(item => item === value)
+                  ? prevState.filter.ancestry.filter(item => item !== value)
+                  : prevState.filter.ancestry.concat (value)
+        }
+      }
+    })
+  }
+
   getEyes(event) {
     const {value} = event.target
     console.log(value)
@@ -108,8 +123,9 @@ class App extends Component {
                   match={routerProps.match} 
                   name={name}
                   onSearch={this.handlerUpdateValue}
-                  people={this.state.people.data.filter(character => character.name.toUpperCase().includes(name.toUpperCase())).filter(character => this.state.filter.houses.includes(character.house)||!this.state.filter.houses.length).filter(character => this.state.filter.eyes.includes(character.eyeColour)||!this.state.filter.eyes.length)}
+                  people={this.state.people.data.filter(character => character.name.toUpperCase().includes(name.toUpperCase())).filter(character => this.state.filter.houses.includes(character.house)||!this.state.filter.houses.length).filter(character => this.state.filter.ancestry.includes(character.ancestry)||!this.state.filter.ancestry.length).filter(character => this.state.filter.eyes.includes(character.eyeColour)||!this.state.filter.eyes.length)}
                   onSearchHouses = {this.getHouses}
+                  onSearchAncestry = {this.getAncestry}
                   onSearchEyes = {this.getEyes}
                 />
               )}
