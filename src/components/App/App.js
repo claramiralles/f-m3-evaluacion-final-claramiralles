@@ -17,7 +17,8 @@ class App extends Component {
         name: '',
         houses: [],
         ancestry: [],
-        eyes: []
+        eyes: [],
+        housesText: ''
       }
     }
   
@@ -25,6 +26,7 @@ class App extends Component {
     this.getHouses = this.getHouses.bind(this);
     this.getAncestry = this.getAncestry.bind(this);
     this.getEyes = this.getEyes.bind(this);
+    this.handlerUpdateValueHouses = this.handlerUpdateValueHouses.bind(this);
   }
 
   componentDidMount() {
@@ -50,9 +52,24 @@ class App extends Component {
 
   handlerUpdateValue (e) {
     const {value} = e.target;
-    this.setState({ 
-      filter: {
-        name: value
+    this.setState( prevState => {
+      return {
+        filter: {
+          ...prevState.filter,
+          name: value
+        }
+      }
+    })
+  }
+
+  handlerUpdateValueHouses (e) {
+    const {value} = e.target;
+    this.setState ( prevState => {
+      return {
+        filter: {
+          ...prevState.filter,
+          housesText: value
+        }
       }
     })
   }
@@ -110,8 +127,8 @@ class App extends Component {
   }
 
   render () {
-    const {data} = this.state.people;
     const {name} = this.state.filter;
+    const {housesText} = this.state.filter;
     return (
       <div className = "App">
         <main>
@@ -123,10 +140,18 @@ class App extends Component {
                   match={routerProps.match} 
                   name={name}
                   onSearch={this.handlerUpdateValue}
-                  people={this.state.people.data.filter(character => character.name.toUpperCase().includes(name.toUpperCase())).filter(character => this.state.filter.houses.includes(character.house)||!this.state.filter.houses.length).filter(character => this.state.filter.ancestry.includes(character.ancestry)||!this.state.filter.ancestry.length).filter(character => this.state.filter.eyes.includes(character.eyeColour)||!this.state.filter.eyes.length)}
+                  people={this.state.people.data
+                    .filter(character => character.name.toUpperCase().includes(name.toUpperCase()))
+                    .filter(character => this.state.filter.houses.includes(character.house)||!this.state.filter.houses.length)
+                    .filter(character => this.state.filter.ancestry.includes(character.ancestry)||!this.state.filter.ancestry.length)
+                    .filter(character => this.state.filter.eyes.includes(character.eyeColour)||!this.state.filter.eyes.length)
+                    .filter(character => character.house.toUpperCase().includes(housesText.toUpperCase()))
+                  }
                   onSearchHouses = {this.getHouses}
                   onSearchAncestry = {this.getAncestry}
                   onSearchEyes = {this.getEyes}
+                  onSearchHousesText={this.handlerUpdateValueHouses}
+                  housesText = {housesText}
                 />
               )}
             />
@@ -136,7 +161,7 @@ class App extends Component {
                 return (
                   <Detail
                     character = {this.getCharacter(routeProps.match.params.characterId)}
-                    people = {data}
+                    people = {this.state.people.data}
                     isLoading = {this.state.people.isLoading}
                   />
                 );
