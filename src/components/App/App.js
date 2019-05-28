@@ -63,10 +63,12 @@ class App extends Component {
     const {value} = e.target
     this.setState (prevState => {
       return {
-        ...prevState.filter,
-        ancestry: prevState.filter.ancestry.find(character => character === value)
-                ? prevState.filter.ancestry.filter(character => character !== value)
-                : prevState.filter.ancestry.concat(value)
+          filter: {
+                ...prevState.filter,
+                ancestry: prevState.filter.ancestry.find(character => character === value)
+                        ? prevState.filter.ancestry.filter(character => character !== value)
+                        : prevState.filter.ancestry.concat(value)
+                }
       }
     })
   }
@@ -86,9 +88,7 @@ class App extends Component {
                   match={routerProps.match} 
                   name={name}
                   onSearch={this.handlerUpdateValue}
-                  people = {this.state.people.data.filter(character =>
-                    character.name.toUpperCase().includes(name.toUpperCase()).filter(character => this.state.filter.ancestry.includes(character.ancestry) || !this.state.filter.ancestry.length
-                  ))}
+                  people = {this.state.people.data.filter(character=>character.name.toUpperCase().includes(name.toUpperCase())).filter(character => this.state.filter.ancestry.includes(character.ancestry) || !this.state.filter.ancestry.length)}
                  onSearchAncestry = {this.getAncestry} 
                 />
               )}
