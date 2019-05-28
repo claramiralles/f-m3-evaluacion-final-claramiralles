@@ -1,3 +1,7 @@
+
+This is a React exercise, as part of the final evaluation of Module 3: React, at Adalab (www.adalab.es). The exercise consists of showing a list of Harry Potter characters in cards, based on an array of data. For this purpose we use ES6, Props and PropTypes.  We also include varied filters to narrow down the information as the user desires and a detail page done with React Router. May you want to initialize it, please follow the React instructions below:
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
