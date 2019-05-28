@@ -1,9 +1,10 @@
 import React from "react";
 import Filters from "../Filters/Filters";
 import CharacterList from "../CharacterList/CharacterList";
+import Ancestry from "../Ancestry/Ancestry";
 
 const Home = props => {
-  const { people, name, onSearch } = props;
+  const { people, name, onSearch, ancestry, onSearchAncestry } = props;
 
   return (
     <div>
@@ -12,6 +13,9 @@ const Home = props => {
       </header>
 
       <Filters onSearch = {onSearch} name = {name} />
+
+      <Ancestry ancestry = {ancestry}
+                  onSearchAncestry = {onSearchAncestry}/>
 
       <CharacterList
         people = {people}

@@ -15,9 +15,11 @@ class App extends Component {
       },
       filter: {
         name: '',
+        ancestry: ''
       }
     };
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
+    this.getAncestry = this.getAncestry.bind(this);
   }
 
   componentDidMount() {
@@ -43,9 +45,25 @@ class App extends Component {
 
   handlerUpdateValue (e) {
     const {value} = e.target;
-    this.setState({ 
-      filter: {
-        name: value
+    this.setState( prevState => { 
+      return { 
+        filter: {
+          ...prevState.filter,
+          name: value
+        }
+      }
+    })
+  }
+    
+
+  getAncestry (e) {
+    const {value} = e.target;
+    this.setState (prevState => {
+      return {
+        filter: {
+          ...prevState.filter,
+          ancestry: value
+        }  
       }
     })
   }
@@ -59,7 +77,7 @@ class App extends Component {
 
   render () {
     const {data} = this.state.people;
-    const {name} = this.state.filter;
+    const {name, ancestry} = this.state.filter;
     return (
       <div className = "App">
         <main>
@@ -73,7 +91,9 @@ class App extends Component {
                   onSearch={this.handlerUpdateValue}
                   people = {this.state.people.data.filter(character =>
                     character.name.toUpperCase().includes(name.toUpperCase())
-                  )}
+                  ).filter(character => character.ancestry.toUpperCase().includes(ancestry.toUpperCase()))}
+                  ancestry = {ancestry}
+                  onSearchAncestry = {this.getAncestry}
                 />
               )}
             />
