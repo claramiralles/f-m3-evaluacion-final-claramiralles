@@ -15,9 +15,11 @@ class App extends Component {
       },
       filter: {
         name: '',
+        eyes: []
       }
     };
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
+    this.getEyes = this.getEyes.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +52,22 @@ class App extends Component {
     })
   }
 
+  getEyes(event) {
+    const {value} = event.target
+    console.log(value)
+
+    this.setState(prevState => {
+      return {
+        filter : {
+          ...prevState.filter,
+          eyes: prevState.filter.eyes.find(item => item === value)
+              ? prevState.filter.eyes.filter(item => item !== value)
+              : prevState.filter.eyes.concat(value)
+        }
+      }
+    })
+  }
+
   getCharacter(id) {
     const { data } = this.state.people;
     console.log (data);
@@ -73,7 +91,9 @@ class App extends Component {
                   onSearch={this.handlerUpdateValue}
                   people = {this.state.people.data.filter(character =>
                     character.name.toUpperCase().includes(name.toUpperCase())
-                  )}
+                  ).filter(character => this.state.filter.eyes.includes(character.eyeColour)||!this.state.filter.eyes.length)
+                }
+                  onSearchEyes = {this.getEyes}
                 />
               )}
             />
