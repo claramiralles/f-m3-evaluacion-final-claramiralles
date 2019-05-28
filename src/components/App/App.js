@@ -15,9 +15,11 @@ class App extends Component {
       },
       filter: {
         name: '',
+        housesText: ''
       }
     };
     this.handlerUpdateValue = this.handlerUpdateValue.bind(this);
+    this.handlerUpdateValueHouses = this.handlerUpdateValueHouses.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +52,16 @@ class App extends Component {
     })
   }
 
+  handlerUpdateValueHouses (e) {
+    const {value} = e.target;
+    this.setState ({
+        filter: {
+          housesText: value
+
+        }
+      })
+  }
+
   getCharacter(id) {
     const { data } = this.state.people;
     console.log (data);
@@ -60,6 +72,7 @@ class App extends Component {
   render () {
     const {data} = this.state.people;
     const {name} = this.state.filter;
+    const {housesText} = this.state.filter;
     return (
       <div className = "App">
         <main>
@@ -73,7 +86,9 @@ class App extends Component {
                   onSearch={this.handlerUpdateValue}
                   people = {this.state.people.data.filter(character =>
                     character.name.toUpperCase().includes(name.toUpperCase())
-                  )}
+                  ).filter(character => character.house.toUpperCase().includes(housesText.toUpperCase()))}
+                  onSearchHousesText={this.handlerUpdateValueHouses}
+                  housesText = {housesText}
                 />
               )}
             />
